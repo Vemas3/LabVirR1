@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Pegas - Laboratorium Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>🌀 Simulasi Gaya Pegas</h1>
+                <p>Manusia dapat melompat berkali-kali di atas trampolin</p>
+            </div>
+            <button class="back-btn" onclick="kembaliKeSimulasi()">
+                ← Kembali
+            </button>
+        </div>
+    </header>
+
+    <main class="simulasi-main">
+        <div class="simulation-box">
+            <div class="info-panel">
+                <h3>Petunjuk:</h3>
+                <p>1️⃣ Klik "Mulai Lompat"</p>
+                <p>2️⃣ Manusia akan melompat berkali-kali di atas trampolin</p>
+                <p>3️⃣ Amati bagaimana pegas trampolin bekerja</p>
+            </div>
+
+            <!-- Area Simulasi -->
+            <div class="simulation-area pegas-area" id="simulationArea">
+                <!-- Manusia (Posisi DI ATAS trampolin) -->
+                <div class="manusia-lompat" id="manusia">
+                    <img src="asset/manusialompat.png" alt="Manusia Lompat">
+                </div>
+
+                <!-- Trampolin -->
+                <div class="trampolin-container" id="trampolin">
+                    <img src="asset/trampolin.png" alt="Trampolin" class="trampolin-img">
+                    <div class="trampolin-label">🏀 Trampolin (Pegas)</div>
+                </div>
+
+                <!-- Jump Counter -->
+                <div class="jump-counter" id="jumpCounter">
+                    <span>Lompatan: </span>
+                    <span id="jumpCount">0</span>
+                </div>
+
+                <!-- Force Indicator -->
+                <div class="force-indicator" id="forceIndicator">
+                    <div class="force-bar" id="forceBar"></div>
+                    <span id="forceText">0%</span>
+                </div>
+            </div>
+
+            <!-- Kontrol -->
+            <div class="control-panel">
+                <button class="action-btn" id="startBtn" onclick="mulaiLompat()">
+                    🤸 Mulai Lompat
+                </button>
+                <button class="action-btn" onclick="tambahLompatan()">
+                    ⬆️ Lompat Lagi!
+                </button>
+                <button class="action-btn reset-btn" onclick="resetSimulasi()">
+                    🔄 Reset
+                </button>
+            </div>
+
+            <!-- Hasil Simulasi -->
+            <div class="result-panel" id="resultPanel">
+                <h3>Hasil Pengamatan:</h3>
+                <div id="resultText" class="result-text">
+                    Klik "Mulai Lompat" untuk melihat gaya pegas bekerja!
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h3>📚 Penjelasan:</h3>
+            <p><strong>Gaya pegas</strong> adalah gaya yang ditimbulkan oleh benda elastis seperti pegas atau karet yang direngangkan. Ketika manusia melompat di atas trampolin, kain trampolin dan pegas-pegasnya akan meregang (tertekan). Kemudian pegas akan kembali ke bentuk semula dan mendorong manusia ke atas. Inilah yang menyebabkan pantulan!</p>
+        </div>
+    </main>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        let jumpCount = 0;
+        let isJumping = false;
+        let jumpInterval = null;
+
+        function mulaiLompat() {
+            if (isJumping) return;
+            
+            isJumping = true;
+            jumpCount = 0;
+            document.getElementById('jumpCount').textContent = '0';
+            
+            const startBtn = document.getElementById('startBtn');
+            startBtn.disabled = true;
+            startBtn.innerHTML = '🤸 Sedang Melompat...';
+            
+            // Start continuous jumping
+            jumpInterval = setInterval(() => {
+                lompat();
+            }, 1200);
+            
+            // Stop after 5 jumps
+            setTimeout(() => {
+                stopLompat();
+            }, 6000);
+        }
+
+        function tambahLompatan() {
+            if (!isJumping) {
+                lompat();
+            }
+        }
+
+        function lompat() {
+            const manusia = document.getElementById('manusia');
+            const trampolin = document.getElementById('trampolin');
+            const forceIndicator = document.getElementById('forceIndicator');
+            const forceBar = document.getElementById('forceBar');
+            const forceText = document.getElementById('forceText');
+            
+            jumpCount++;
+            document.getElementById('jumpCount').textContent = jumpCount;
+            
+            forceIndicator.style.opacity = '1';
+            forceBar.style.width = '100%';
+            forceText.textContent = '100%';
+            
+            // Trampolin pressed
+            trampolin.classList.add('pressed');
+            
+            setTimeout(() => {
+                // Human jumps
+                manusia.classList.add('jumping');
+                trampolin.classList.remove('pressed');
+                
+                forceBar.style.width = '0%';
+                forceText.textContent = '0%';
+                
+                setTimeout(() => {
+                    manusia.classList.remove('jumping');
+                    forceIndicator.style.opacity = '0';
+                }, 1000);
+            }, 300);
+        }
+
+        function stopLompat() {
+            clearInterval(jumpInterval);
+            isJumping = false;
+            
+            const startBtn = document.getElementById('startBtn');
+            startBtn.disabled = false;
+            startBtn.innerHTML = '🤸 Mulai Lompat';
+            
+            showResult();
+        }
+
+        function showResult() {
+            const resultText = document.getElementById('resultText');
+            
+            resultText.innerHTML = `
+                <div class="result-item">
+                    <strong>🌀 Gaya Pegas Bekerja!</strong><br><br>
+                    • Jumlah lompatan: <span class="highlight">${jumpCount} kali</span><br>
+                    • Saat mendarat: <span class="highlight">TRAMPOLIN TERTEKAN</span> ⬇️<br>
+                    • Pegas meregang: <span class="highlight">ENERGI TERSIMPAN</span> 💾<br>
+                    • Pegas kembali: <span class="highlight">MANUSIA TERLONTAR</span> ⬆️<br>
+                    • Hasil: <span class="highlight">LOMPATAN BERKALI-KALI</span> 🔄<br><br>
+                    Ketika manusia mendarat di trampolin, pegas-pegas trampolin 
+                    tertekan dan menyimpan energi. Kemudian pegas kembali ke 
+                    bentuk semula dan melepaskan energi tersebut, sehingga 
+                    manusia terlontar ke atas. Proses ini berulang sehingga 
+                    manusia dapat melompat berkali-kali!
+                </div>
+            `;
+        }
+
+        function resetSimulasi() {
+            clearInterval(jumpInterval);
+            
+            const manusia = document.getElementById('manusia');
+            const trampolin = document.getElementById('trampolin');
+            const startBtn = document.getElementById('startBtn');
+            
+            manusia.classList.remove('jumping');
+            trampolin.classList.remove('pressed');
+            
+            startBtn.disabled = false;
+            startBtn.innerHTML = '🤸 Mulai Lompat';
+            
+            jumpCount = 0;
+            document.getElementById('jumpCount').textContent = '0';
+            document.getElementById('forceIndicator').style.opacity = '0';
+            
+            isJumping = false;
+            
+            document.getElementById('resultText').innerHTML = 
+                'Klik "Mulai Lompat" untuk melihat gaya pegas bekerja!';
+        }
+
+        function kembaliKeSimulasi() {
+            window.location.href = 'simulasi.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Gesek - Laboratorium Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>🖐️ Simulasi Gaya Gesek</h1>
+                <p>Pilih permukaan dan lihat mobil bergerak di atasnya</p>
+            </div>
+            <button class="back-btn" onclick="window.location.href='simulasi.html'">← Kembali</button>
+        </div>
+    </header>
+
+    <main class="simulasi-main">
+        <div class="simulation-box">
+            <div class="info-panel">
+                <h3>Petunjuk:</h3>
+                <p>1️⃣ Pilih permukaan (Tanah atau Aspal)</p>
+                <p>2️⃣ Klik "Jalankan Mobil"</p>
+                <p>3️⃣ Amati mobil bergerak di atas permukaan yang dipilih</p>
+            </div>
+
+            <div class="surface-selection">
+                <div class="surface-option" id="optionTanah" onclick="simulasiGesek.pilihPermukaan('tanah')">
+                    <img src="asset/tanah.png" alt="Tanah" class="surface-img">
+                    <div class="surface-label">🌾 Tanah</div>
+                    <div class="selection-indicator" id="indicatorTanah">✓</div>
+                </div>
+                <div class="surface-option" id="optionAspal" onclick="simulasiGesek.pilihPermukaan('aspal')">
+                    <img src="asset/aspal.png" alt="Aspal" class="surface-img">
+                    <div class="surface-label">🛣️ Aspal</div>
+                    <div class="selection-indicator" id="indicatorAspal">✓</div>
+                </div>
+            </div>
+
+            <div class="simulation-area gesek-area" id="simulationArea">
+                <div class="surface-background" id="surfaceBackground">
+                    <img src="asset/aspal.png" alt="Surface" class="surface-bg-img" id="surfaceImg">
+                </div>
+                <div class="mobil" id="mobil">
+                    <img src="asset/mobil.png" alt="Mobil">
+                </div>
+                <div class="finish-line" id="finishLine">🏁 FINISH</div>
+            </div>
+
+            <div class="control-panel">
+                <button class="action-btn" id="startBtn" onclick="simulasiGesek.jalankanMobil()" disabled>🚗 Jalankan Mobil</button>
+                <button class="action-btn reset-btn" onclick="simulasiGesek.reset()">🔄 Reset</button>
+            </div>
+
+            <div class="result-panel" id="resultPanel">
+                <h3>Hasil Pengamatan:</h3>
+                <div id="resultText" class="result-text">Pilih permukaan terlebih dahulu, lalu klik "Jalankan Mobil"!</div>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h3>📚 Penjelasan:</h3>
+            <p><strong>Gaya gesek</strong> adalah gaya yang menahan gerak benda. Permukaan yang kasar (tanah) menghasilkan gaya gesek lebih besar sehingga mobil bergerak lebih lambat.</p>
+        </div>
+    </main>
+
+    <footer class="simulasi-footer">
+        <p>© 2025 Laboratorium Virtual SD - Frissenda Septrianur Marinda Karno Putri - 220611100069</p>
+    </footer>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <script src="simulasi-gesek.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            simulasiGesek.init();
+        });
+    </script>
+</body>
+</html>
