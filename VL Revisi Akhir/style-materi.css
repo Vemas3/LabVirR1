@@ -1,0 +1,834 @@
+/* ========================================
+   STYLE MATERI - LABORATORIUM VIRTUAL SD
+   Author: Frissenda Septrianur Marinda Karno Putri - 220611100069
+   ======================================== */
+
+/* ========================================
+   HEADER STYLES
+   ======================================== */
+.materi-header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title h1 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.title p {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.back-btn {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(102, 187, 106, 0.95), rgba(56, 142, 60, 0.95));
+}
+
+/* ========================================
+   CONTAINER STYLES
+   ======================================== */
+.materi-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ========================================
+   TAB NAVIGATION STYLES
+   ======================================== */
+.tab-navigation {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Calibri', 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #2c5530;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    border-color: rgba(76, 175, 80, 1);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.tab-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.tab-btn.active .tab-number {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c5530;
+}
+
+.tab-label {
+    font-weight: 500;
+}
+
+.scroll-nav,
+.slide-indicators {
+    display: none;
+}
+
+/* ========================================
+   CONTENT SECTION STYLES
+   ======================================== */
+.materi-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: block;
+    overflow-x: visible;
+}
+
+.materi-section {
+    display: none;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+.materi-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.section-icon {
+    font-size: 2rem;
+}
+
+.section-header h2 {
+    color: #2c5530;
+    font-size: 1.6rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Definition Box */
+.definition {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 5px solid #4caf50;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #2c5530;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.concept-box {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.concept-box h3 {
+    color: #2c5530;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.concept-list {
+    list-style: none;
+    padding: 0;
+}
+
+.concept-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.list-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.concept-list li strong {
+    color: #2c5530;
+    display: block;
+    margin-bottom: 0.3rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.concept-list li p {
+    color: #2c5530;
+    margin: 0;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Jenis Grid */
+.jenis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.jenis-card {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.jenis-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.jenis-header {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.jenis-icon {
+    font-size: 2rem;
+}
+
+.jenis-header h3 {
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.jenis-body {
+    padding: 1rem;
+}
+
+.jenis-body ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: #2c5530;
+}
+
+.jenis-body li {
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.jenis-def {
+    color: #2c5530;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.contoh-box, .sifat-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.contoh-box strong, .sifat-box strong {
+    color: #2c5530;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.contoh-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: #2c5530;
+    font-size: 0.85rem;
+}
+
+.contoh-box li {
+    margin-bottom: 0.2rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.sifat-box p {
+    margin: 0;
+    color: #2c5530;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* ========================================
+   QUIZ STYLES - ALL QUESTIONS CONSISTENT
+   ======================================== */
+.soal-container {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.soal-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.soal-info p {
+    color: #2c5530;
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.soal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Soal Item - Consistent for ALL questions (1-15) */
+.soal-item {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.soal-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.soal-text p {
+    color: #2c5530;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.soal-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.option:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateX(3px);
+}
+
+.option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4caf50;
+    flex-shrink: 0;
+}
+
+.option span {
+    color: #2c5530;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.feedback {
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: none;
+}
+
+.feedback:not(:empty) {
+    display: block;
+}
+
+.feedback.correct {
+    background: rgba(76, 175, 80, 0.2);
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+.feedback.incorrect {
+    background: rgba(244, 67, 54, 0.2);
+    color: #c62828;
+    border: 1px solid #f44336;
+}
+
+.feedback.warning {
+    background: rgba(255, 152, 0, 0.2);
+    color: #e65100;
+    border: 1px solid #ff9800;
+}
+
+/* Soal Actions */
+.soal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.check-btn, .reset-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.check-btn {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.check-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(102, 187, 106, 0.95), rgba(56, 142, 60, 0.95));
+}
+
+.reset-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: #2c5530;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Hasil Container */
+.hasil-container {
+    display: none;
+    margin-top: 1.5rem;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hasil-box {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hasil-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.score-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#scoreMessage {
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   BOTTOM NAVIGATION
+   ======================================== */
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.prev-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: #2c5530;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.prev-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+}
+
+.next-btn {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(102, 187, 106, 0.95), rgba(56, 142, 60, 0.95));
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.materi-footer {
+    background: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.materi-footer p {
+    color: #2c5530;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.materi-footer p:last-child {
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+/* ========================================
+   BACKGROUND ELEMENTS
+   ======================================== */
+.background, .science-elements, .element {
+    display: none;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .materi-container {
+        padding: 1rem;
+    }
+
+    .materi-card {
+        padding: 1rem;
+    }
+
+    .materi-section {
+        padding: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .tab-navigation {
+        gap: 0.5rem;
+        padding: 0.8rem;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .tab-number {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+
+    .tab-label {
+        font-size: 0.8rem;
+    }
+
+    .jenis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .soal-options {
+        grid-template-columns: 1fr;
+    }
+
+    .soal-actions {
+        flex-direction: column;
+    }
+
+    .check-btn, .reset-btn {
+        width: 100%;
+    }
+
+    .bottom-nav {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title h1 {
+        font-size: 1.4rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .jenis-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .score-display {
+        font-size: 2rem;
+    }
+
+    .tab-navigation {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0.8rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .tab-navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex-shrink: 0;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .tab-label {
+        display: none;
+    }
+
+    .tab-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .soal-item {
+        padding: 0.8rem;
+    }
+
+    .soal-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .option {
+        padding: 0.6rem;
+    }
+
+    .option span {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media print {
+    .materi-header,
+    .control-panel,
+    .back-btn,
+    .bottom-nav {
+        display: none;
+    }
+
+    .materi-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}

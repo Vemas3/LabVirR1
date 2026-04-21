@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Otot - Laboratorium Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>💪 Simulasi Gaya Otot</h1>
+                <p>Manusia dan meja bergerak bersamaan</p>
+            </div>
+            <button class="back-btn" onclick="window.location.href='simulasi.html'">← Kembali</button>
+        </div>
+    </header>
+
+    <main class="simulasi-main">
+        <div class="simulation-box">
+            <div class="info-panel">
+                <h3>Petunjuk:</h3>
+                <p>1️⃣ Klik "Mulai Mendorong"</p>
+                <p>2️⃣ Amati manusia dan meja bergerak bersamaan</p>
+                <p>3️⃣ Lihat bagaimana gaya otot bekerja</p>
+            </div>
+
+            <div class="simulation-area otot-area" id="simulationArea">
+                <div class="push-container" id="pushContainer">
+                    <div class="manusia" id="manusia">
+                        <img src="asset/manusia.png" alt="Manusia">
+                    </div>
+                    <div class="meja" id="meja">
+                        <img src="asset/meja.png" alt="Meja">
+                    </div>
+                </div>
+                <div class="force-arrow" id="forceArrow">
+                    <span>💪 GAYA OTOT</span>
+                    <div class="arrow">➡️➡️➡️</div>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <button class="action-btn" id="startBtn" onclick="simulasiOtot.mulaiMendorong()">💪 Mulai Mendorong</button>
+                <button class="action-btn reset-btn" onclick="simulasiOtot.reset()">🔄 Reset</button>
+            </div>
+
+            <div class="result-panel" id="resultPanel">
+                <h3>Hasil Pengamatan:</h3>
+                <div id="resultText" class="result-text">Klik "Mulai Mendorong" untuk melihat gaya otot bekerja!</div>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h3>📚 Penjelasan:</h3>
+            <p><strong>Gaya otot</strong> adalah gaya yang dihasilkan oleh otot manusia atau hewan. Ketika manusia mendorong meja, otot-ototnya bekerja menghasilkan gaya. Gaya ini dapat menggerakkan benda dari diam menjadi bergerak. Manusia dan meja bergerak bersamaan karena ada kontak langsung antara manusia dan meja.</p>
+        </div>
+    </main>
+
+    <footer class="simulasi-footer">
+        <p>© 2025 Laboratorium Virtual SD - Frissenda Septrianur Marinda Karno Putri - 220611100069</p>
+    </footer>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <script src="simulasi-otot.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            simulasiOtot.init();
+        });
+    </script>
+</body>
+</html>

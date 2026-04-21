@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran - Laboratorium Virtual SD</title>
+    <meta name="app-version" content="1.0.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-materi.css">
+    
+    <!-- Redirect Script -->
+    <script>
+        if (!sessionStorage.getItem('coverShown')) {
+            window.location.href = 'cover.html';
+        }
+    </script>
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="science-elements">
+            <div class="element"></div>
+            <div class="element"></div>
+            <div class="element"></div>
+        </div>
+    </div>
+
+    <header class="materi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>📚 MATERI PEMBELAJARAN</h1>
+                <p>Jenis-Jenis Gaya untuk SD</p>
+            </div>
+            <button class="back-btn" onclick="kembaliKeMenu()">
+                Kembali ke Menu
+            </button>
+        </div>
+    </header>
+
+    <main class="materi-container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="showTab(0)">
+                <span class="tab-number">1</span>
+                <span class="tab-label">Pengertian</span>
+            </button>
+            <button class="tab-btn" onclick="showTab(1)">
+                <span class="tab-number">2</span>
+                <span class="tab-label">Jenis Gaya</span>
+            </button>
+            <button class="tab-btn" onclick="showTab(2)">
+                <span class="tab-number">3</span>
+                <span class="tab-label">Pengaruh Gaya</span>
+            </button>
+            <button class="tab-btn" onclick="showTab(3)">
+                <span class="tab-number">4</span>
+                <span class="tab-label">Contoh Penerapan</span>
+            </button>
+            <button class="tab-btn" onclick="showTab(4)">
+                <span class="tab-number">5</span>
+                <span class="tab-label">Kesimpulan</span>
+            </button>
+            <button class="tab-btn" onclick="showTab(5)">
+                <span class="tab-number">6</span>
+                <span class="tab-label">Kuis</span>
+            </button>
+        </div>
+
+        <!-- Content Container -->
+        <div class="materi-card" id="materiCard">
+            <!-- Section 1: Pengertian -->
+            <section class="materi-section active" id="tab1">
+                <div class="section-header">
+                    <span class="section-icon">💡</span>
+                    <h2>1. Pengertian Gaya</h2>
+                </div>
+                <div class="section-content">
+                    <p class="definition">
+                        <strong>Gaya</strong> Gaya merupakan suatu kekuatan berupa tarikan atau dorongan yang dapat menyebabkan suatu benda mengalami perbuahan posisi atau kedudukan (bergerak), berhenti, maupun berubah bentuk.
+                    </p>
+                    <div class="concept-box">
+                        <h3>🎯 Apa yang Bisa Dilakukan Gaya?</h3>
+                        <ul class="concept-list">
+                            <li>
+                                <span class="list-icon">➡️</span>
+                                <div>
+                                    <strong>Menggerakkan benda diam</strong>
+                                    <p>Contoh: Mendorong meja yang awalnya diam</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">🛑</span>
+                                <div>
+                                    <strong>Menghentikan benda bergerak</strong>
+                                    <p>Contoh: Menangkap bola yang sedang meluncur</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">🔄</span>
+                                <div>
+                                    <strong>Mengubah arah gerak benda</strong>
+                                    <p>Contoh: Memukul bola kasti sehingga berubah arah</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">🎨</span>
+                                <div>
+                                    <strong>Mengubah bentuk benda</strong>
+                                    <p>Contoh: Meremas plastisin atau tanah liat</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Jenis Gaya -->
+            <section class="materi-section" id="tab2">
+                <div class="section-header">
+                    <span class="section-icon">🔬</span>
+                    <h2>2. Jenis-Jenis Gaya</h2>
+                </div>
+                
+                <div class="jenis-grid">
+                    <!-- Gaya Gesek -->
+                    <div class="jenis-card">
+                        <div class="jenis-header">
+                            <span class="jenis-icon">🖐️</span>
+                            <h3>Gaya Gesek</h3>
+                        </div>
+                        <div class="jenis-body">
+                            <p class="jenis-def">
+Gaya gesek merupakan gaya yang bekerja menahan gerak suatu benda, sehingga benda tersebut tidak bergerak saat diberi tarikan atau dorongan.
+                            </p>
+                                                        <div class="contoh-box">
+                                <strong>Contoh Gaya Gravitasi:</strong>
+                                <ul>
+                                    <li><strong>Keuntungan: </strong>Membantu memperlambat atau menghentikan gerak benda kerugian.</li>
+                                    <li><strong>Kerugian: </strong>Dapat menyebabkan keausan pada permukaan benda dan menghambat gerak benda.</li>
+                                </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaya Otot -->
+                    <div class="jenis-card">
+                        <div class="jenis-header">
+                            <span class="jenis-icon">💪</span>
+                            <h3>Gaya Otot</h3>
+                        </div>
+                        <div class="jenis-body">
+                            <p class="jenis-def">
+                                Gaya otot merupakan gaya yang timbul akibat kontraksi otot pada
+makhluk hidup, khususnya manusia dan hewan.
+                            </p>
+                            <div class="contoh-box">
+                                <strong>Contoh Gaya Otot:</strong>
+                                <ul>
+                                    <li><strong>Ketika seseorang mengangkat tas, memindahkan meja, mendorong pintu gerbang atau menaiki tangga, tubuh menggunakan gaya otot untuk melakukan gerakan tersebut.</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaya Magnet -->
+                    <div class="jenis-card">
+                        <div class="jenis-header">
+                            <span class="jenis-icon">🧲</span>
+                            <h3>Gaya Magnet</h3>
+                        </div>
+                        <div class="jenis-body">
+                            <p class="jenis-def">
+                                Gaya magnet merupakan gaya Tarik atau tolak dari magnet terhadap benda.
+                            </p>
+                            <p class="jenis-def">
+                                Sifat magnet pada benda itu cukup menarik secara sederhana, magnet punya kemampuan “menarik” benda tertentu dan punya aturan khas dalam berinteraksi. Ini poin-poin utamanya:
+                            </p>
+                            <div class="contoh-box">
+                                <strong>Sifat Magnet:</strong>
+                                <ul>
+                                    <li><strong>Menarik Benda Tertentu:</strong>Magnet hanya menarik bahan tertentu seperti besi, baja, nikel, dan kobalt. Benda seperti kayu, plastik, atau kertas tidak tertarik.</li>
+                                    <li><strong>Memiliki Dua Kutub:</strong>Setiap magnet selalu punya dua kutub: utara (U) dan selatan (S). Kalau magnet dipotong, masing-masing potongan tetap punya dua kutub.</li>
+                                    <li><strong>Kutub Senama tolak-Menolak, Tidak Senama Tarik-Menarik:</strong>Kutub U dengan U akan saling tolak, begitu juga S dengan S. Tapi U dengan S akan saling tarik.</li>
+                                    <li><strong>Gaya Magnet Paling Kuat Di Kutub:</strong>Bagian ujung magnet (kutub) adalah area dengan gaya tarik paling kuat dibanding bagian tengah.</li>
+                                    <li><strong>Dapat Menembus Benda Tertentu:</strong>Gaya magnet bisa menembus benda tipis seperti kertas atau plastik, tapi akan melemah jika penghalangnya tebal.</li>
+                                    <li><strong>Dapat Membuat Benda Lain Menjadi Magnet (Induksi):</strong>Besi yang didekatkan ke magnet bisa ikut menjadi magnet sementara.</li>
+                                    <li><strong>Memiliki Medan Magnet:</strong>Di sekitar magnet ada daerah pengaruh yang disebut medan magnet biasanya digambarkan dengan garis-garis dari kutub utara ke selatan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaya Gravitasi -->
+                    <div class="jenis-card">
+                        <div class="jenis-header">
+                            <span class="jenis-icon">🌍</span>
+                            <h3>Gaya Gravitasi</h3>
+                        </div>
+                        <div class="jenis-body">
+                            <p class="jenis-def">
+                                Gaya gravitasi adalah gaya tarik-menarik yang terjadi antara semua benda yang mempunyai massa di alam semesta. Bumi yang mempunyai massa sangat besar menghasilkan gaya gravitasi yang sangat besar menarik benda-benda di sekitarnya.
+                            </p>
+                            <div class="contoh-box">
+                                <strong>Contoh Gaya Gravitasi:</strong>
+                                <ul>
+                                    <li><strong>Peristiwa menunjukkan adanya gaya gravitasi antara lain jatuhnya buah dari pohon. Turunnya air hujan ke permukaan bumi.</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaya Pegas -->
+                    <div class="jenis-card">
+                        <div class="jenis-header">
+                            <span class="jenis-icon">🌀</span>
+                            <h3>Gaya Pegas</h3>
+                        </div>
+                        <div class="jenis-body">
+                            <p class="jenis-def">
+                                Gaya pegas adalah gaya yang dihasilkan oleh benda elastis ketika direnganggkan atau di tekan. Gaya pegas timbul karena adanya sifat elastis pada benda seperti karet.
+                            </p>
+                            <li><strong>Gaya pegas timbul adanya sifat elastis pada benda karet.</strong></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Pengaruh Gaya -->
+            <section class="materi-section" id="tab3">
+                <div class="section-header">
+                    <span class="section-icon">⚡</span>
+                    <h2>3. Pengaruh Gaya</h2>
+                </div>
+                <div class="section-content">
+                    <p class="definition">
+                        Gaya memiliki berbagai pengaruh terhadap benda di sekitar kita:
+                    </p>
+                    <div class="concept-box">
+                        <h3>📊 Pengaruh Gaya dalam Kehidupan:</h3>
+                        <ul class="concept-list">
+                            <li>
+                                <span class="list-icon">🏃</span>
+                                <div>
+                                    <strong>Pergerakan</strong>
+                                    <p>Gaya memungkinkan benda bergerak dari satu tempat ke tempat lain</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">🛑</span>
+                                <div>
+                                    <strong>Penghentian</strong>
+                                    <p>Gaya gesek dapat menghentikan benda yang sedang bergerak</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">🔄</span>
+                                <div>
+                                    <strong>Perubahan Arah</strong>
+                                    <p>Gaya dapat mengubah arah gerak benda</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">📐</span>
+                                <div>
+                                    <strong>Perubahan Bentuk</strong>
+                                    <p>Gaya dapat mengubah bentuk dan ukuran benda</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Contoh Penerapan -->
+            <section class="materi-section" id="tab4">
+                <div class="section-header">
+                    <span class="section-icon">🔧</span>
+                    <h2>4. Contoh Penerapan</h2>
+                </div>
+                <div class="section-content">
+                    <div class="jenis-grid">
+                        <div class="jenis-card">
+                            <div class="jenis-header">
+                                <span class="jenis-icon">🚲</span>
+                                <h3>Dalam Transportasi</h3>
+                            </div>
+                            <div class="jenis-body">
+                                <ul>
+                                    <li>Rem sepeda menggunakan gaya gesek</li>
+                                    <li>Motor dan mobil menggunakan gaya otot/mesin</li>
+                                    <li>Kapal laut mengapung karena gaya apung</li>
+                                    <li>Pesawat terbang menggunakan gaya angkat</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="jenis-card">
+                            <div class="jenis-header">
+                                <span class="jenis-icon">🏠</span>
+                                <h3>Dalam Kehidupan Sehari-hari</h3>
+                            </div>
+                            <div class="jenis-body">
+                                <ul>
+                                    <li>Membuka pintu menggunakan gaya otot</li>
+                                    <li>Kompas menggunakan gaya magnet</li>
+                                    <li>Benda jatuh karena gaya gravitasi</li>
+                                    <li>Karet gelang menggunakan gaya pegas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="jenis-card">
+                            <div class="jenis-header">
+                                <span class="jenis-icon">🏀</span>
+                                <h3>Dalam Olahraga</h3>
+                            </div>
+                            <div class="jenis-body">
+                                <ul>
+                                    <li>Menendang bola menggunakan gaya otot</li>
+                                    <li>Parachute menggunakan gaya gesek udara</li>
+                                    <li>Trampolin menggunakan gaya pegas</li>
+                                    <li>Berenang menggunakan gaya dorong air</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Kesimpulan -->
+            <section class="materi-section" id="tab5">
+                <div class="section-header">
+                    <span class="section-icon">📝</span>
+                    <h2>5. Kesimpulan</h2>
+                </div>
+                <div class="section-content">
+                    <div class="definition">
+                        <p><strong>Gaya</strong> adalah bagian penting dari kehidupan kita sehari-hari. 
+                        Tanpa gaya, tidak akan ada pergerakan, tidak ada aktivitas, dan dunia akan diam sepenuhnya.</p>
+                    </div>
+                    <div class="concept-box">
+                        <h3>🎯 Poin-Poin Penting:</h3>
+                        <ul class="concept-list">
+                            <li>
+                                <span class="list-icon">✓</span>
+                                <div>
+                                    <strong>Gaya adalah tarikan atau dorongan</strong>
+                                    <p>Dapat mempengaruhi gerak, bentuk, dan arah benda</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">✓</span>
+                                <div>
+                                    <strong>Ada 5 jenis gaya utama</strong>
+                                    <p>Gesek, Otot, Magnet, Gravitasi, dan Pegas</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">✓</span>
+                                <div>
+                                    <strong>Setiap gaya memiliki manfaat</strong>
+                                    <p>Membantu kita dalam beraktivitas sehari-hari</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon">✓</span>
+                                <div>
+                                    <strong>Gaya ada di mana-mana</strong>
+                                    <p>Dari bumi hingga luar angkasa</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+<!-- Section 6: Kuis (15 Soal Berdasarkan Kisi-Kisi) -->
+<section class="materi-section" id="tab6">
+    <div class="section-header">
+        <span class="section-icon">✏️</span>
+        <h2>6. Kuis Evaluasi</h2>
+    </div>
+    
+    <div class="soal-container">
+        <div class="soal-info">
+            <p>📝 Jawablah pertanyaan berikut untuk menguji pemahamanmu!</p>
+            <p><strong>Petunjuk:</strong> Pilih satu jawaban yang paling tepat!</p>
+        </div>
+
+        <div class="soal-list">
+            <!-- Soal 1 -->
+            <div class="soal-item">
+                <div class="soal-number">1</div>
+                <div class="soal-text">
+                    <p>Seorang kiper menepis bola yang ditendang ke arah gawang sehingga bola berbelok arah. Peristiwa ini menunjukkan bahwa gaya dapat...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal1" value="a"><span>A. Membuat benda diam menjadi bergerak</span></label>
+                    <label class="option"><input type="radio" name="soal1" value="b"><span>B. Mengubah arah gerak benda</span></label>
+                    <label class="option"><input type="radio" name="soal1" value="c"><span>C. Menghentikan gerak benda</span></label>
+                    <label class="option"><input type="radio" name="soal1" value="d"><span>D. Mengubah bentuk benda</span></label>
+                </div>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="soal-item">
+                <div class="soal-number">2</div>
+                <div class="soal-text">
+                    <p>Saat membuat kerajinan dari tanah liat atau plastisin, kita menekan-nekan bahan tersebut hingga membentuk pola tertentu. Hal ini membuktikan bahwa gaya...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal2" value="a"><span>A. Mengubah wujud benda</span></label>
+                    <label class="option"><input type="radio" name="soal2" value="b"><span>B. Mengubah posisi benda</span></label>
+                    <label class="option"><input type="radio" name="soal2" value="c"><span>C. Mengubah bentuk benda</span></label>
+                    <label class="option"><input type="radio" name="soal2" value="d"><span>D. Mengubah massa benda</span></label>
+                </div>
+                <div class="feedback" id="feedback2"></div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="soal-item">
+                <div class="soal-number">3</div>
+                <div class="soal-text">
+                    <p>Sebuah mobil yang sedang melaju kencang tiba-tiba direm oleh pengemudinya hingga berhenti. Pengaruh gaya peristiwa ini adalah...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal3" value="a"><span>A. Mengubah benda bergerak menjadi diam</span></label>
+                    <label class="option"><input type="radio" name="soal3" value="b"><span>B. Mengubah arah benda</span></label>
+                    <label class="option"><input type="radio" name="soal3" value="c"><span>C. Mempercepat gerak benda</span></label>
+                    <label class="option"><input type="radio" name="soal3" value="d"><span>D. Mengubah bentuk benda</span></label>
+                </div>
+                <div class="feedback" id="feedback3"></div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="soal-item">
+                <div class="soal-number">4</div>
+                <div class="soal-text">
+                    <p>Kegiatan di bawah ini yang menunjukkan gaya dapat membuat benda diam menjadi bergerak adalah...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal4" value="a"><span>A. Mendorong meja yang awalnya diam</span></label>
+                    <label class="option"><input type="radio" name="soal4" value="b"><span>B. Memotong kue dengan pisau</span></label>
+                    <label class="option"><input type="radio" name="soal4" value="c"><span>C. Meremas kertas kado</span></label>
+                    <label class="option"><input type="radio" name="soal4" value="d"><span>D. Menangkap bola yang melambung</span></label>
+                </div>
+                <div class="feedback" id="feedback4"></div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="soal-item">
+                <div class="soal-number">5</div>
+                <div class="soal-text">
+                    <p>Benda-benda berikut ini yang dapat ditarik kuat oleh magnet (feromagnetik) adalah...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal5" value="a"><span>A. Kayu dan plastik</span></label>
+                    <label class="option"><input type="radio" name="soal5" value="b"><span>B. Besi dan baja</span></label>
+                    <label class="option"><input type="radio" name="soal5" value="c"><span>C. Kaca dan aluminium</span></label>
+                    <label class="option"><input type="radio" name="soal5" value="d"><span>D. Emas dan perak</span></label>
+                </div>
+                <div class="feedback" id="feedback5"></div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="soal-item">
+                <div class="soal-number">6</div>
+                <div class="soal-text">
+                    <p>Pemanfaatan gaya magnet pada pintu lemari es bertujuan untuk...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal6" value="a"><span>A. Mendinginkan makanan lebih cepat</span></label>
+                    <label class="option"><input type="radio" name="soal6" value="b"><span>B. Menutup pintu dengan rapat secara otomatis</span></label>
+                    <label class="option"><input type="radio" name="soal6" value="c"><span>C. Menambah beban pintu agar berat</span></label>
+                    <label class="option"><input type="radio" name="soal6" value="d"><span>D. Menghasilkan arus listrik</span></label>
+                </div>
+                <div class="feedback" id="feedback6"></div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="soal-item">
+                <div class="soal-number">7</div>
+                <div class="soal-text">
+                    <p>Alat navigasi yang menggunakan magnet untuk menunjukkan arah utara dan selatan bumi adalah...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal7" value="a"><span>A. Termometer</span></label>
+                    <label class="option"><input type="radio" name="soal7" value="b"><span>B. Kompas</span></label>
+                    <label class="option"><input type="radio" name="soal7" value="c"><span>C. Barometer</span></label>
+                    <label class="option"><input type="radio" name="soal7" value="d"><span>D. Mikroskop</span></label>
+                </div>
+                <div class="feedback" id="feedback7"></div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="soal-item">
+                <div class="soal-number">8</div>
+                <div class="soal-text">
+                    <p>Dua buah kutub magnet yang senama (misalnya utara dengan utara) jika didekatkan akan...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal8" value="a"><span>A. Tolak-menolak</span></label>
+                    <label class="option"><input type="radio" name="soal8" value="b"><span>B. Diam saja</span></label>
+                    <label class="option"><input type="radio" name="soal8" value="c"><span>C. Tarik-menarik</span></label>
+                    <label class="option"><input type="radio" name="soal8" value="d"><span>D. Menyatu secara permanen</span></label>
+                </div>
+                <div class="feedback" id="feedback8"></div>
+            </div>
+
+            <!-- Soal 9 -->
+            <div class="soal-item">
+                <div class="soal-number">9</div>
+                <div class="soal-text">
+                    <p>Gaya yang ditimbulkan oleh tarikan atau dorongan pada benda elastis seperti karet dinamakan...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal9" value="a"><span>A. Gaya magnet</span></label>
+                    <label class="option"><input type="radio" name="soal9" value="b"><span>B. Gaya mesin</span></label>
+                    <label class="option"><input type="radio" name="soal9" value="c"><span>C. Gaya gravitasi</span></label>
+                    <label class="option"><input type="radio" name="soal9" value="d"><span>D. Gaya pegas</span></label>
+                </div>
+                <div class="feedback" id="feedback9"></div>
+            </div>
+
+            <!-- Soal 10 -->
+            <div class="soal-item">
+                <div class="soal-number">10</div>
+                <div class="soal-text">
+                    <p>Ban mobil dibuat beralur-alur bertujuan untuk memperbesar gaya...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal10" value="a"><span>A. Gaya magnet</span></label>
+                    <label class="option"><input type="radio" name="soal10" value="b"><span>B. Gaya gesek</span></label>
+                    <label class="option"><input type="radio" name="soal10" value="c"><span>C. Gaya gravitasi</span></label>
+                    <label class="option"><input type="radio" name="soal10" value="d"><span>D. Gaya pegas</span></label>
+                </div>
+                <div class="feedback" id="feedback10"></div>
+            </div>
+
+            <!-- Soal 11 -->
+            <div class="soal-item">
+                <div class="soal-number">11</div>
+                <div class="soal-text">
+                    <p>Seorang anak sedang bermain ketapel. Gaya yang bekerja pada karet ketapel saat ditarik adalah gaya...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal11" value="a"><span>A. Gaya magnet</span></label>
+                    <label class="option"><input type="radio" name="soal11" value="b"><span>B. Gaya gesek</span></label>
+                    <label class="option"><input type="radio" name="soal11" value="c"><span>C. Gaya gravitasi</span></label>
+                    <label class="option"><input type="radio" name="soal11" value="d"><span>D. Gaya pegas</span></label>
+                </div>
+                <div class="feedback" id="feedback11"></div>
+            </div>
+
+            <!-- Soal 12 -->
+            <div class="soal-item">
+                <div class="soal-number">12</div>
+                <div class="soal-text">
+                    <p>Daerah di sekitar magnet yang masih dipengaruhi oleh gaya tarik magnet disebut...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal12" value="a"><span>A. Garis magnet</span></label>
+                    <label class="option"><input type="radio" name="soal12" value="b"><span>B. Pusat magnet</span></label>
+                    <label class="option"><input type="radio" name="soal12" value="c"><span>C. Kutub magnet</span></label>
+                    <label class="option"><input type="radio" name="soal12" value="d"><span>D. Medan magnet</span></label>
+                </div>
+                <div class="feedback" id="feedback12"></div>
+            </div>
+
+            <!-- Soal 13 -->
+            <div class="soal-item">
+                <div class="soal-number">13</div>
+                <div class="soal-text">
+                    <p>Jika kita menjatuhkan dua buah benda dari ketinggian yang sama, kedua benda tersebut akan jatuh ke bawah karena pengaruh gaya...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal13" value="a"><span>A. Gaya magnet</span></label>
+                    <label class="option"><input type="radio" name="soal13" value="b"><span>B. Gaya gesek</span></label>
+                    <label class="option"><input type="radio" name="soal13" value="c"><span>C. Gaya gravitasi</span></label>
+                    <label class="option"><input type="radio" name="soal13" value="d"><span>D. Gaya pegas</span></label>
+                </div>
+                <div class="feedback" id="feedback13"></div>
+            </div>
+
+            <!-- Soal 14 -->
+            <div class="soal-item">
+                <div class="soal-number">14</div>
+                <div class="soal-text">
+                    <p>Berikut ini adalah manfaat magnet dalam kehidupan sehari-hari, <strong>kecuali</strong>...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal14" value="a"><span>A. Ujung obeng untuk memegang sekrup besi</span></label>
+                    <label class="option"><input type="radio" name="soal14" value="b"><span>B. Hiasan yang menempel di pintu kulkas</span></label>
+                    <label class="option"><input type="radio" name="soal14" value="c"><span>C. Bel listrik di sekolah</span></label>
+                    <label class="option"><input type="radio" name="soal14" value="d"><span>D. Sebagai bahan pembuatan ban sepeda</span></label>
+                </div>
+                <div class="feedback" id="feedback14"></div>
+            </div>
+
+            <!-- Soal 15 -->
+            <div class="soal-item">
+                <div class="soal-number">15</div>
+                <div class="soal-text">
+                    <p>Magnet yang dibuat dengan cara melilitkan kawat pada paku yang dihubungkan ke baterai disebut magnet...</p>
+                </div>
+                <div class="soal-options">
+                    <label class="option"><input type="radio" name="soal15" value="a"><span>A. Magnet induksi</span></label>
+                    <label class="option"><input type="radio" name="soal15" value="b"><span>B. Magnet alam</span></label>
+                    <label class="option"><input type="radio" name="soal15" value="c"><span>C. Magnet permanen</span></label>
+                    <label class="option"><input type="radio" name="soal15" value="d"><span>D. Elektromagnet</span></label>
+                </div>
+                <div class="feedback" id="feedback15"></div>
+            </div>
+        </div>
+
+        <div class="soal-actions">
+            <button class="check-btn" onclick="cekJawaban()">✅ Cek Jawaban</button>
+            <button class="reset-btn" onclick="resetJawaban()">🔄 Ulangi</button>
+        </div>
+
+        <div class="hasil-container" id="hasilContainer">
+            <div class="hasil-box">
+                <h3>📊 Hasil Jawabanmu</h3>
+                <div class="score-display">
+                    <span id="scoreNumber">0</span>
+                    <span>/ 100</span>
+                </div>
+                <p id="scoreMessage"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+        <!-- Navigasi Bawah -->
+        <div class="bottom-nav">
+            <button class="nav-btn prev-btn" onclick="kembaliKeMenu()">
+                Menu Utama
+            </button>
+            <button class="nav-btn next-btn" onclick="lanjutSimulasi()">
+                Lanjut ke Simulasi
+            </button>
+        </div>
+    </main>
+
+    <footer class="materi-footer">
+        <p>© 2025 Laboratorium Virtual SD - Materi Jenis-Jenis Gaya</p>
+        <p>Frissenda Septrianur Marinda Karno Putri - 220611100069</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        function kembaliKeMenu() {
+            window.location.href = 'index.html';
+        }
+
+        function lanjutSimulasi() {
+            window.location.href = 'simulasi.html';
+        }
+
+        // Tab Navigation Function
+        function showTab(index) {
+            const sections = document.querySelectorAll('.materi-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            sections[index].classList.add('active');
+            tabs[index].classList.add('active');
+
+            document.getElementById('materiCard').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+// Quiz Functions (15 Soal - 10 Poin per Soal = Total 150)
+// ✅ Quiz Functions - 15 Soal, Total 100 Poin, Tanpa Desimal
+function cekJawaban() {
+    const jawabanBenar = {
+        soal1: 'b', soal2: 'c', soal3: 'a', soal4: 'a', soal5: 'b',
+        soal6: 'b', soal7: 'b', soal8: 'a', soal9: 'd', soal10: 'b',
+        soal11: 'd', soal12: 'd', soal13: 'c', soal14: 'd', soal15: 'd'
+    };
+
+    let jumlahBenar = 0;  // ✅ Hitung jumlah jawaban benar
+    const totalSoal = 15;
+
+    // Clear feedback sebelumnya
+    document.querySelectorAll('.feedback').forEach(el => {
+        el.innerHTML = '';
+        el.className = 'feedback';
+    });
+
+    // Cek setiap soal
+    for (let i = 1; i <= totalSoal; i++) {
+        const selected = document.querySelector(`input[name="soal${i}"]:checked`);
+        const feedbackEl = document.getElementById(`feedback${i}`);
+
+        if (selected) {
+            if (selected.value === jawabanBenar[`soal${i}`]) {
+                jumlahBenar++;  // ✅ Tambah 1 jika benar
+                if (feedbackEl) {
+                    feedbackEl.innerHTML = '✅ Benar!';
+                    feedbackEl.classList.add('correct');
+                }
+            } else {
+                if (feedbackEl) {
+                    feedbackEl.innerHTML = '❌ Salah, coba lagi!';
+                    feedbackEl.classList.add('incorrect');
+                }
+            }
+        } else {
+            if (feedbackEl) {
+                feedbackEl.innerHTML = '⚠️ Belum dijawab!';
+                feedbackEl.classList.add('warning');
+            }
+        }
+    }
+
+    // ✅ Hitung skor: (benar / total) × 100, lalu BULATKAN
+    const skorMentah = (jumlahBenar / totalSoal) * 100;
+    const skorAkhir = Math.round(skorMentah);  // ✅ Tanpa koma
+    
+    // ✅ Update display skor
+    const scoreNumber = document.getElementById('scoreNumber');
+    const scoreMessage = document.getElementById('scoreMessage');
+    const hasilContainer = document.getElementById('hasilContainer');
+    
+    if (scoreNumber) {
+        scoreNumber.textContent = skorAkhir;  // ✅ Tampil angka bulat
+    }
+    
+    if (scoreMessage) {
+        if (skorAkhir === 100) {
+            scoreMessage.textContent = '🎉 Luar biasa! Kamu sempurna!';
+        } else if (skorAkhir >= 80) {
+            scoreMessage.textContent = '👏 Bagus! Tingkatkan lagi!';
+        } else if (skorAkhir >= 60) {
+            scoreMessage.textContent = '💪 Cukup, ayo belajar lagi!';
+        } else {
+            scoreMessage.textContent = '📚 Jangan menyerah, baca materi lagi!';
+        }
+    }
+    
+    // ✅ Tampilkan hasil container
+    if (hasilContainer) {
+        hasilContainer.style.display = 'block';  // ✅ Munculkan hasil
+        hasilContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+        function resetJawaban() {
+            document.querySelectorAll('input[type="radio"]').forEach(el => {
+                el.checked = false;
+            });
+            document.querySelectorAll('.feedback').forEach(el => {
+                el.innerHTML = '';
+                el.className = 'feedback';
+            });
+            document.getElementById('hasilContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Gravitasi - Laboratorium Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>🌍 Simulasi Gaya Gravitasi</h1>
+                <p>Amati buah jatuh dari pohon</p>
+            </div>
+            <button class="back-btn" onclick="kembaliKeSimulasi()">
+                ← Kembali
+            </button>
+        </div>
+    </header>
+
+    <main class="simulasi-main">
+        <div class="simulation-box">
+            <div class="info-panel">
+                <h3>Petunjuk:</h3>
+                <p>1️⃣ Klik buah apel atau jeruk di pohon</p>
+                <p>2️⃣ Amati buah jatuh ke tanah</p>
+                <p>3️⃣ Lihat bagaimana gravitasi bekerja</p>
+            </div>
+
+            <!-- Area Simulasi -->
+            <div class="simulation-area gravity-area" id="simulationArea">
+                <!-- Pohon dengan Buah MENEMPEL di Pohon -->
+                <div class="tree-container" id="pohon">
+                    <img src="asset/pohon.png" alt="Pohon" class="tree-img">
+                    
+                    <!-- Buah Apel 1 - Menempel di dahan kiri atas -->
+                    <div class="fruit on-tree" id="apel1" data-fruit="apel" style="top: 90px; left: 140px;">
+                        <span class="fruit-emoji">🍎</span>
+                    </div>
+                    
+                    <!-- Buah Jeruk - Menempel di dahan kanan atas -->
+                    <div class="fruit on-tree" id="jeruk1" data-fruit="jeruk" style="top: 85px; left: 220px;">
+                        <span class="fruit-emoji">🍊</span>
+                    </div>
+                    
+                    <!-- Buah Apel 2 - Menempel di dahan tengah -->
+                    <div class="fruit on-tree" id="apel2" data-fruit="apel" style="top: 130px; left: 180px;">
+                        <span class="fruit-emoji">🍎</span>
+                    </div>
+                    
+                    <!-- Buah Jeruk 2 - Menempel di dahan kiri tengah -->
+                    <div class="fruit on-tree" id="jeruk2" data-fruit="jeruk" style="top: 140px; left: 120px;">
+                        <span class="fruit-emoji">🍊</span>
+                    </div>
+                </div>
+
+                <!-- Tanah -->
+                <div class="ground">
+                    <div class="ground-label">🌱 Tanah</div>
+                    <div class="fallen-fruits" id="fallenFruits"></div>
+                </div>
+
+                <!-- Gravity Arrow -->
+                <div class="gravity-arrow">
+                    <div class="arrow-text">⬇️ GRAVITASI</div>
+                    <div class="arrow-line">↓</div>
+                </div>
+            </div>
+
+            <!-- Kontrol -->
+            <div class="control-panel">
+                <button class="action-btn" onclick="jatuhkanSemua()">
+                    🍎 Jatuhkan Semua Buah
+                </button>
+                <button class="action-btn reset-btn" onclick="resetSimulasi()">
+                    🔄 Reset
+                </button>
+            </div>
+
+            <!-- Hasil Simulasi -->
+            <div class="result-panel" id="resultPanel">
+                <h3>Hasil Pengamatan:</h3>
+                <div id="resultText" class="result-text">
+                    Klik buah di pohon untuk melihat gaya gravitasi bekerja!
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h3>📚 Penjelasan:</h3>
+            <p><strong>Gaya gravitasi</strong> adalah gaya tarik yang dimiliki bumi terhadap semua benda di sekitarnya. Semua benda yang memiliki massa akan tertarik ke pusat bumi. Itulah sebabnya buah jatuh ke bawah, bukan ke atas atau ke samping. Gravitasi bumi membuat kita tetap berdiri di tanah dan tidak melayang di udara.</p>
+        </div>
+    </main>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            initGayaGravitasi();
+        });
+
+        function initGayaGravitasi() {
+            const fruits = document.querySelectorAll('.fruit');
+            
+            fruits.forEach(fruit => {
+                fruit.addEventListener('click', function() {
+                    if (!this.classList.contains('fallen')) {
+                        const fruitName = this.getAttribute('data-fruit');
+                        jatuhkanBuah(this, fruitName);
+                    }
+                });
+            });
+        }
+
+        function jatuhkanBuah(element, fruitName) {
+            const fruitEmoji = fruitName === 'apel' ? '🍎' : '🍊';
+            const fruitLabel = fruitName === 'apel' ? 'Apel' : 'Jeruk';
+            
+            element.classList.add('falling');
+            element.classList.remove('on-tree');
+            
+            setTimeout(() => {
+                element.classList.add('fallen');
+                element.classList.remove('falling');
+                
+                const fallenFruits = document.getElementById('fallenFruits');
+                const fallenFruit = document.createElement('span');
+                fallenFruit.className = 'fallen-fruit';
+                fallenFruit.textContent = fruitEmoji;
+                fallenFruits.appendChild(fallenFruit);
+                
+                showResult(fruitName, fruitEmoji, fruitLabel);
+            }, 1500);
+        }
+
+        function jatuhkanSemua() {
+            const fruits = document.querySelectorAll('.fruit');
+            let count = 0;
+            let totalToFall = 0;
+            
+            fruits.forEach(fruit => {
+                if (!fruit.classList.contains('fallen')) {
+                    totalToFall++;
+                }
+            });
+            
+            if (totalToFall === 0) return;
+            
+            fruits.forEach((fruit, index) => {
+                if (!fruit.classList.contains('fallen')) {
+                    setTimeout(() => {
+                        const fruitName = fruit.getAttribute('data-fruit');
+                        const fruitEmoji = fruitName === 'apel' ? '🍎' : '🍊';
+                        const fruitLabel = fruitName === 'apel' ? 'Apel' : 'Jeruk';
+                        jatuhkanBuah(fruit, fruitName);
+                        count++;
+                        
+                        if (count === totalToFall) {
+                            setTimeout(() => {
+                                showResult('semua', '🍎🍊', 'Semua Buah');
+                            }, 2000);
+                        }
+                    }, index * 400);
+                }
+            });
+        }
+
+        function showResult(fruitName, emoji, label) {
+            const resultText = document.getElementById('resultText');
+            
+            resultText.innerHTML = `
+                <div class="result-item">
+                    <strong>🌍 ${label} Jatuh Karena Gravitasi!</strong><br><br>
+                    • Benda: <span class="highlight">${emoji} ${label}</span><br>
+                    • Gaya: <span class="highlight">GRAVITASI BUMI</span><br>
+                    • Arah: <span class="highlight">KE BAWAH (Pusat Bumi)</span> ⬇️<br>
+                    • Hasil: <span class="highlight">JATUH KE TANAH</span><br><br>
+                    Buah yang tadinya menempel di pohon jatuh ke tanah karena ditarik oleh 
+                    gaya gravitasi bumi. Semua benda di bumi akan jatuh ke bawah 
+                    jika tidak ada yang menahannya. Ini membuktikan bumi memiliki 
+                    gaya tarik yang sangat besar!
+                </div>
+            `;
+        }
+
+        function resetSimulasi() {
+            const fruits = document.querySelectorAll('.fruit');
+            fruits.forEach(fruit => {
+                fruit.classList.remove('falling', 'fallen');
+                fruit.classList.add('on-tree');
+            });
+            
+            document.getElementById('fallenFruits').innerHTML = '';
+            document.getElementById('resultText').innerHTML = 
+                'Klik buah di pohon untuk melihat gaya gravitasi bekerja!';
+        }
+
+        function kembaliKeSimulasi() {
+            window.location.href = 'simulasi.html';
+        }
+    </script>
+</body>
+</html>

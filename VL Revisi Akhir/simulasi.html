@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Interaktif - Laboratorium Virtual SD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="science-elements">
+            <div class="element"></div>
+            <div class="element"></div>
+            <div class="element"></div>
+        </div>
+    </div>
+
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>🔬 SIMULASI INTERAKTIF</h1>
+                <p>Eksperimen Virtual Jenis-Jenis Gaya</p>
+            </div>
+            <button class="back-btn" onclick="kembaliKeMenu()">← Kembali ke Menu</button>
+        </div>
+    </header>
+
+    <main class="simulasi-container">
+        <div class="simulasi-card">
+            <div class="welcome-message">
+                <h2>Pilih Jenis Gaya untuk Simulasi</h2>
+                <p>Klik salah satu gaya di bawah ini untuk memulai eksperimen virtual</p>
+            </div>
+
+            <div class="gaya-grid">
+                <a href="simulasi-gesek.html" class="gaya-card">
+                    <div class="gaya-icon">🖐️</div>
+                    <h3>Gaya Gesek</h3>
+                    <p>Amati pengaruh permukaan terhadap gerak benda</p>
+                    <div class="gaya-assets"><span>🚗</span><span>🛤️</span></div>
+                </a>
+
+                <a href="simulasi-otot.html" class="gaya-card">
+                    <div class="gaya-icon">💪</div>
+                    <h3>Gaya Otot</h3>
+                    <p>Lihat bagaimana otot menggerakkan benda</p>
+                    <div class="gaya-assets"><span>🧑</span><span>🪑</span></div>
+                </a>
+
+                <a href="simulasi-magnet.html" class="gaya-card">
+                    <div class="gaya-icon">🧲</div>
+                    <h3>Gaya Magnet</h3>
+                    <p>Uji daya tarik magnet pada berbagai benda</p>
+                    <div class="gaya-assets"><span>🧲</span><span>📎</span></div>
+                </a>
+
+                <a href="simulasi-gravitasi.html" class="gaya-card">
+                    <div class="gaya-icon">🌍</div>
+                    <h3>Gaya Gravitasi</h3>
+                    <p>Amati buah jatuh dari pohon</p>
+                    <div class="gaya-assets"><span>🌳</span><span>🍎</span><span>🍊</span></div>
+                </a>
+
+                <a href="simulasi-pegas.html" class="gaya-card">
+                    <div class="gaya-icon">🌀</div>
+                    <h3>Gaya Pegas</h3>
+                    <p>Lihat elastisitas pegas pada trampolin</p>
+                    <div class="gaya-assets"><span>🤸</span><span>🏀</span></div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <footer class="simulasi-footer">
+        <p>© 2025 Laboratorium Virtual SD - Simulasi Interaktif</p>
+        <p>Frissenda Septrianur Marinda Karno Putri - 220611100069</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        function kembaliKeMenu() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

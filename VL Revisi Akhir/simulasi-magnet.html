@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Magnet - Laboratorium Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="simulasi-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>🧲 Simulasi Gaya Magnet</h1>
+                <p>Pilih benda untuk ditarik ke magnet</p>
+            </div>
+            <button class="back-btn" onclick="kembaliKeSimulasi()">
+                ← Kembali
+            </button>
+        </div>
+    </header>
+
+    <main class="simulasi-main">
+        <div class="simulation-box">
+            <div class="info-panel">
+                <h3>Petunjuk:</h3>
+                <p>1️⃣ Pilih benda (Paku atau Penghapus)</p>
+                <p>2️⃣ Klik "Tarik dengan Magnet"</p>
+                <p>3️⃣ Paku akan mendekat ke magnet, penghapus tidak bergerak</p>
+            </div>
+
+            <!-- Pilihan Benda -->
+            <div class="object-selection">
+                <div class="object-option" id="optionPaku" onclick="pilihBenda('paku')">
+                    <img src="asset/paku.png" alt="Paku" class="object-img">
+                    <div class="object-label">📌 Paku (Besi)</div>
+                    <div class="selection-indicator" id="indicatorPaku">✓</div>
+                </div>
+                <div class="object-option" id="optionPenghapus" onclick="pilihBenda('penghapus')">
+                    <img src="asset/penghapus.png" alt="Penghapus" class="object-img">
+                    <div class="object-label">✏️ Penghapus (Karet)</div>
+                    <div class="selection-indicator" id="indicatorPenghapus">✓</div>
+                </div>
+            </div>
+
+            <!-- Area Simulasi -->
+            <div class="simulation-area magnet-area" id="simulationArea">
+                <!-- Magnet (Fixed Position - KIRI) -->
+                <div class="magnet-fixed" id="magnet">
+                    <img src="asset/magnet.png" alt="Magnet">
+                    <div class="magnet-label">🧲 Magnet</div>
+                </div>
+
+                <!-- Attraction Line -->
+                <div class="attraction-line" id="attractionLine">
+                    <div class="line-dots">
+                        <span>•</span><span>•</span><span>•</span><span>•</span><span>•</span>
+                    </div>
+                </div>
+
+                <!-- Benda yang Dipilih (KANAN - jauh dari magnet) -->
+                <div class="test-object" id="testObject">
+                    <img src="asset/paku.png" alt="Benda" id="objectImg">
+                    <div class="object-label" id="objectLabel">📌 Paku</div>
+                </div>
+            </div>
+
+            <!-- Kontrol -->
+            <div class="control-panel">
+                <button class="action-btn" id="startBtn" onclick="tarikBenda()" disabled>
+                    🧲 Tarik dengan Magnet
+                </button>
+                <button class="action-btn reset-btn" onclick="resetSimulasi()">
+                    🔄 Reset
+                </button>
+            </div>
+
+            <!-- Hasil Simulasi -->
+            <div class="result-panel" id="resultPanel">
+                <h3>Hasil Pengamatan:</h3>
+                <div id="resultText" class="result-text">
+                    Pilih benda terlebih dahulu, lalu klik "Tarik dengan Magnet"!
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h3>📚 Penjelasan:</h3>
+            <p><strong>Gaya magnet</strong> adalah gaya tarik yang dimiliki magnet terhadap benda-benda tertentu, terutama yang terbuat dari logam seperti besi dan baja. Magnet tidak dapat menarik semua benda. Hanya benda yang mengandung logam tertentu yang dapat ditarik oleh magnet.</p>
+        </div>
+    </main>
+
+    <div class="music-control" id="musicControl">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🔇</span>
+    </button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+</div>
+
+<!-- 2. Audio Element -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="asset/BacksoundVL.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- 3. JavaScript -->
+<script src="music.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        let bendaDipilih = null;
+        let isRunning = false;
+
+        function pilihBenda(benda) {
+            if (isRunning) return;
+            
+            bendaDipilih = benda;
+            
+            document.getElementById('indicatorPaku').style.display = 'none';
+            document.getElementById('indicatorPenghapus').style.display = 'none';
+            
+            if (benda === 'paku') {
+                document.getElementById('indicatorPaku').style.display = 'block';
+                document.getElementById('optionPaku').classList.add('selected');
+                document.getElementById('optionPenghapus').classList.remove('selected');
+                document.getElementById('objectImg').src = 'asset/paku.png';
+                document.getElementById('objectLabel').innerHTML = '📌 Paku';
+            } else {
+                document.getElementById('indicatorPenghapus').style.display = 'block';
+                document.getElementById('optionPenghapus').classList.add('selected');
+                document.getElementById('optionPaku').classList.remove('selected');
+                document.getElementById('objectImg').src = 'asset/penghapus.png';
+                document.getElementById('objectLabel').innerHTML = '✏️ Penghapus';
+            }
+            
+            document.getElementById('startBtn').disabled = false;
+            
+            // Reset posisi benda
+            const testObject = document.getElementById('testObject');
+            testObject.style.transition = 'all 0.5s ease';
+            testObject.style.transform = 'translateX(0)';
+            testObject.style.opacity = '1';
+            
+            document.getElementById('resultText').innerHTML = `
+                <div class="result-item">
+                    <strong>✅ Benda Dipilih: ${benda === 'paku' ? '📌 Paku (Besi)' : '✏️ Penghapus (Karet)'}</strong><br>
+                    ${benda === 'paku' ? 'Paku akan bergerak mendekat ke magnet.' : 'Penghapus tidak akan bergerak (tidak tertarik magnet).'}<br>
+                    Klik "Tarik dengan Magnet"!
+                </div>
+            `;
+        }
+
+        function tarikBenda() {
+            if (!bendaDipilih || isRunning) return;
+            
+            isRunning = true;
+            const testObject = document.getElementById('testObject');
+            const attractionLine = document.getElementById('attractionLine');
+            const startBtn = document.getElementById('startBtn');
+            
+            startBtn.disabled = true;
+            attractionLine.style.opacity = '1';
+            
+            const isAttracted = bendaDipilih === 'paku';
+            
+            if (isAttracted) {
+                // PAKU: Bergerak MENDEKAT ke magnet (ke kiri)
+                testObject.style.transition = 'all 1500ms ease-in';
+                testObject.style.transform = 'translateX(-350px)';
+                testObject.style.opacity = '0.8';
+            } else {
+                // PENGHAPUS: TIDAK BERGERAK sama sekali
+                testObject.style.transition = 'none';
+                testObject.style.transform = 'translateX(0)';
+            }
+            
+            setTimeout(() => {
+                showResult(isAttracted);
+                isRunning = false;
+                startBtn.disabled = false;
+                attractionLine.style.opacity = '0';
+            }, 1500);
+        }
+
+        function showResult(isAttracted) {
+            const resultText = document.getElementById('resultText');
+            const objectName = bendaDipilih === 'paku' ? 'Paku' : 'Penghapus';
+            const objectIcon = bendaDipilih === 'paku' ? '📌' : '✏️';
+            const material = bendaDipilih === 'paku' ? 'BESI/LOGAM' : 'KARET';
+            
+            if (isAttracted) {
+                resultText.innerHTML = `
+                    <div class="result-item success">
+                        <strong>✅ ${objectIcon} ${objectName} TERTARIK!</strong><br><br>
+                        • Benda: <span class="highlight">${objectName}</span><br>
+                        • Bahan: <span class="highlight">${material}</span><br>
+                        • Hasil: <span class="highlight">TER TARIK KE MAGNET</span> ✅<br>
+                        • Gerakan: <span class="highlight">MENDEKAT KE MAGNET</span> ⬅️<br><br>
+                        Paku terbuat dari besi yang merupakan bahan ferromagnetik. 
+                        Magnet dapat menarik benda yang terbuat dari besi, baja, 
+                        atau logam tertentu. Benda bergerak mendekat ke arah magnet!
+                    </div>
+                `;
+            } else {
+                resultText.innerHTML = `
+                    <div class="result-item fail">
+                        <strong>❌ ${objectIcon} ${objectName} TIDAK TERTARIK</strong><br><br>
+                        • Benda: <span class="highlight">${objectName}</span><br>
+                        • Bahan: <span class="highlight">${material}</span><br>
+                        • Hasil: <span class="highlight">TIDAK TER TARIK</span> ❌<br>
+                        • Gerakan: <span class="highlight">TIDAK BERGERAK</span> ➡️<br><br>
+                        Penghapus terbuat dari karet yang bukan bahan logam. 
+                        Magnet tidak dapat menarik benda yang terbuat dari 
+                        karet, plastik, kayu, atau kertas. Benda tetap di tempat!
+                    </div>
+                `;
+            }
+        }
+
+        function resetSimulasi() {
+            const testObject = document.getElementById('testObject');
+            const startBtn = document.getElementById('startBtn');
+            
+            testObject.style.transition = 'all 0.5s ease';
+            testObject.style.transform = 'translateX(0)';
+            testObject.style.opacity = '1';
+            
+            startBtn.disabled = true;
+            isRunning = false;
+            bendaDipilih = null;
+            
+            document.getElementById('indicatorPaku').style.display = 'none';
+            document.getElementById('indicatorPenghapus').style.display = 'none';
+            document.getElementById('optionPaku').classList.remove('selected');
+            document.getElementById('optionPenghapus').classList.remove('selected');
+            document.getElementById('attractionLine').style.opacity = '0';
+            
+            document.getElementById('resultText').innerHTML = 'Pilih benda terlebih dahulu, lalu klik "Tarik dengan Magnet"!';
+        }
+
+        function kembaliKeSimulasi() {
+            window.location.href = 'simulasi.html';
+        }
+    </script>
+</body>
+</html>
